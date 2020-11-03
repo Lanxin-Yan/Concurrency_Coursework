@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class user implements Runnable{			
 	private int n = 0;		
@@ -6,18 +5,19 @@ public class user implements Runnable{
 	private int numOfElements;
 	private Buffer buf;
 
-	public user(int ID, int elementNum, Buffer b) {	//Created user will add a certain number of elements to the buffer.
+	/**
+	 * This class adds elements onto the buffer
+	 * @param ID The ID of the user, useful for later on display
+	 * @param elementNum The amount of elements this user has to add
+	 * @param b The buffer we are manipulating
+	 */
+	public user(int ID, int elementNum, Buffer b) {
 		userID = ID;
 		numOfElements = elementNum;
 		buf = b;
 	}
 
-	public void addElem(int n){
-		buf.add(n, userID);
-
-	}
-
-	public void run(){
+	public void run(){  				
 		while (n < numOfElements){
 		if(buf.add(n, userID) == true){
 			n++;
@@ -27,5 +27,9 @@ public class user implements Runnable{
 
 	public int get(){
 		return n;
+	}
+
+	public void set(int remainder) { //remainder calculations
+		numOfElements = numOfElements + remainder;
 	}
 }   

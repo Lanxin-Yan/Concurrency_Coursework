@@ -6,7 +6,10 @@ public class Buffer							//Provides data and operations onto the fixed-length b
   private int size;	  	
 	private LinkedList<Object> buf_list;				
   private semaphore mutex = new semaphore(1);
-  
+  /**
+   * A buffer structure represented as a list
+   * @param n This is the size of the buffer
+   */
      public Buffer(int n)						//Buffer creation, with n indicating the maximum capacity
 	   {
       buf_list = new LinkedList<Object>();
@@ -14,6 +17,12 @@ public class Buffer							//Provides data and operations onto the fixed-length b
       size = n;
      }
 
+     /**
+      * Adding method
+      * @param n The element that the user is adding
+      * @param userID The user that is adding the element
+      * @return True if there are still elements left for user to add, false if else
+      */
      public boolean add(int n, int userID){
       if (elements < size){ 
         try{
@@ -32,7 +41,12 @@ public class Buffer							//Provides data and operations onto the fixed-length b
 
       }
     }
-  
+    
+    /**
+     * Removing method
+     * @param webID The webserver that is removing element
+     * @return True if there are still elements on the queue left to be add, false if else
+     */
      public boolean remove(int webID){
       if (elements > 0){
         try{

@@ -1,4 +1,4 @@
-import java.util.*;
+
 public class semaphore
   {
     private int count = 0;
